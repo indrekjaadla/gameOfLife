@@ -80,7 +80,19 @@ test('isCellPresent', () => {
     expect(isCellPresent(2, 2, gameField)).equal(true)
 })
 
-test('surroundingLifeCounter', () => {
+test('surroundingLifeCounterCorner', () => {
+    let indexOfRow = 0
+    let indexOfColumn = 0
+    let gameField = [
+        [1, 1, 0, 0],
+        [1, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]]
+
+    expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(2)
+})
+
+test('surroundingLifeCounterMiddle', () => {
     let indexOfRow = 0
     let indexOfColumn = 0
     let gameField = [

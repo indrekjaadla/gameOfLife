@@ -109,5 +109,11 @@ test('generateNextGenerationField', () => {
         [0, 0, 0],
         [0, 0, 0]]
 
-    expect(generateNextGenerationField(currentGenerationField)).equal(undefined)
+    let nextGenerationField = generateNextGenerationField(currentGenerationField)
+
+    for (let i = 0; i < nextGenerationField.length; i++) {
+        for (let j = 0; j < nextGenerationField[i]; j++) {
+            expect(nextGenerationField[i][j]).equal(currentGenerationField[i][j])
+        }
+    }
 })

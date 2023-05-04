@@ -27,7 +27,6 @@ initialPositionBeacon[3][4] = 1
 initialPositionBeacon[4][3] = 1
 initialPositionBeacon[4][4] = 1
 
-
 export function fillArrayWith(fillingElement, arrayToFill) {
     for (let i = 0; i < arrayToFill.length; i++) {
         try {
@@ -73,6 +72,13 @@ export function countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField) 
     return surroundingAliveCells
 }
 
+
 export function generateNextGenerationField(currentGenerationField) {
-    return undefined
+    let nextGenerationField = generateEmptyField(currentGenerationField.length, currentGenerationField[0].length)
+    for (let i = 0; i < currentGenerationField.length; i++) {
+        for (let j = 0; j < currentGenerationField[i]; j++) {
+            nextGenerationField[i][j] = 0
+        }
+    }
+    return nextGenerationField
 }

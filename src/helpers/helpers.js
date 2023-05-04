@@ -4,6 +4,20 @@
 //TODO initial pattern hardcoded blinker
 //TODO user can choose between predefined patterns
 
+export let initialPositionBlinker = generateEmptyField(5, 5)
+initialPositionBlinker[2][1] = 1
+initialPositionBlinker[2][2] = 1
+initialPositionBlinker[2][3] = 1
+
+export let initialPositionToad = generateEmptyField(6, 6)
+initialPositionToad[2][2] = 1
+initialPositionToad[2][3] = 1
+initialPositionToad[2][4] = 1
+initialPositionToad[3][1] = 1
+initialPositionToad[3][2] = 1
+initialPositionToad[3][3] = 1
+
+
 export function arrayFiller(arrayToFill, fillingElement) {
     for (let i = 0; i < arrayToFill.length; i++) {
         try {

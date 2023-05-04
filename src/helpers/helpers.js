@@ -72,9 +72,14 @@ export function countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField) 
     return surroundingAliveCells
 }
 
+export function decideLifeOrDeath() {
+    return undefined
+}
+
 
 export function generateNextGenerationField(currentGenerationField) {
     let nextGenerationField = generateEmptyField(currentGenerationField.length, currentGenerationField[0].length)
+
     for (let i = 0; i < currentGenerationField.length; i++) {
         for (let j = 0; j < currentGenerationField[i]; j++) {
             nextGenerationField[i][j] = 0

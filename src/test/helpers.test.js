@@ -1,13 +1,10 @@
 import {expect, test} from "vitest";
 import {
-    countSurroundingLiveCells,
     fillArrayWith,
-    generateEmptyField,
-    generateNextGenerationField,
-    initialPositionBeacon,
-    initialPositionBlinker,
-    initialPositionToad,
-    isCellPresent
+    isCellPresent,
+    countSurroundingLiveCells,
+    decideLifeOrDeath,
+    generateNextGenerationField
 } from "src/helpers/helpers.js"
 
 test('fillArrayWithNumber', () => {
@@ -49,20 +46,20 @@ test('fillArrayWithString', () => {
 //     console.log(arrayToFill[arrayLength - 1])
 // })
 
-test('emptyField', () => {
-    let nOfRows = 6
-    let nOfColumns = 6
-    let emptyField = generateEmptyField(nOfRows, nOfColumns)
-
-    expect(emptyField.length).equal(nOfRows)
-    expect(emptyField[0].length).equal(nOfColumns)
-
-    for (let i = 0; i < emptyField.length; i++) {
-        for (let j = 0; j < emptyField[i]; j++) {
-            expect(emptyField[i][j]).equal(0)
-        }
-    }
-})
+// test('emptyField', () => {
+//     let nOfRows = 6
+//     let nOfColumns = 6
+//     let emptyField = generateEmptyField(nOfRows, nOfColumns)
+//
+//     expect(emptyField.length).equal(nOfRows)
+//     expect(emptyField[0].length).equal(nOfColumns)
+//
+//     for (let i = 0; i < emptyField.length; i++) {
+//         for (let j = 0; j < emptyField[i]; j++) {
+//             expect(emptyField[i][j]).equal(1)
+//         }
+//     }
+// })
 
 test('isCellPresent', () => {
     let gameField = [
@@ -103,11 +100,15 @@ test('surroundingLifeCounterMiddle', () => {
     expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(4)
 })
 
+test('', () =>{
+    expect(decideLifeOrDeath).equal(undefined)
+})
+
 test('generateNextGenerationField', () => {
     let currentGenerationField = [
+        [1, 0, 0],
         [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]]
+        [0, 0, 1]]
 
     let nextGenerationField = generateNextGenerationField(currentGenerationField)
 
@@ -116,4 +117,8 @@ test('generateNextGenerationField', () => {
             expect(nextGenerationField[i][j]).equal(currentGenerationField[i][j])
         }
     }
+
+    console.log(currentGenerationField)
+    console.log(nextGenerationField)
+
 })

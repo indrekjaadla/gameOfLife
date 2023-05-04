@@ -28,7 +28,7 @@ initialPositionBeacon[4][3] = 1
 initialPositionBeacon[4][4] = 1
 
 
-export function arrayFiller(arrayToFill, fillingElement) {
+export function fillArrayWith(fillingElement, arrayToFill) {
     for (let i = 0; i < arrayToFill.length; i++) {
         try {
             arrayToFill[i] = fillingElement.slice(0)
@@ -42,8 +42,8 @@ export function generateEmptyField(nOfRows, nOfColumns) {
     let a = new Array(nOfRows)
     let b = new Array(nOfColumns)
 
-    arrayFiller(b, 0);
-    arrayFiller(a, b);
+    fillArrayWith(0, b);
+    fillArrayWith(b, a);
 
     return a;
 }

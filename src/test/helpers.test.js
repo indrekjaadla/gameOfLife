@@ -1,13 +1,18 @@
 import {expect, test} from "vitest";
-// import { assertType, expectTypeOf } from 'vitest'
-import {arrayFiller, generateEmptyField, initialPositionBlinker} from "src/helpers/helpers.js"
+import {
+    fillArrayWith,
+    generateEmptyField,
+    initialPositionBeacon,
+    initialPositionBlinker,
+    initialPositionToad
+} from "src/helpers/helpers.js"
 
-test('arrayFillerNumber', () => {
+test('fillArrayWithNumber', () => {
     let arrayLength = 5
     let arrayToFill = new Array(arrayLength)
     let fillingElement = 666
 
-    arrayFiller(arrayToFill, fillingElement)
+    fillArrayWith(fillingElement, arrayToFill)
 
     expect(arrayToFill[0]).equal(fillingElement)
     expect(arrayToFill[arrayLength - 1]).equal(fillingElement)
@@ -15,12 +20,12 @@ test('arrayFillerNumber', () => {
     console.log(arrayToFill[arrayLength - 1])
 })
 
-test('arrayFillerString', () => {
+test('fillArrayWithString', () => {
     let arrayLength = 5
     let arrayToFill = new Array(arrayLength)
     let fillingElement = 'testString'
 
-    arrayFiller(arrayToFill, fillingElement)
+    fillArrayWith(fillingElement, arrayToFill)
 
     expect(arrayToFill[0]).equal(fillingElement)
     expect(arrayToFill[arrayLength - 1]).equal(fillingElement)
@@ -28,12 +33,12 @@ test('arrayFillerString', () => {
     console.log(arrayToFill[arrayLength - 1])
 })
 
-// test('arrayFillerArray', () => {
+// test('fillArrayWithArray', () => {
 //     let arrayLength = 5
 //     let arrayToFill = new Array(arrayLength)
 //     let fillingElement = []
 //
-//     arrayFiller(arrayToFill, fillingElement)
+//     fillArrayWith(arrayToFill, fillingElement)
 //
 //     expect(arrayToFill[0]).equal(typeof fillingElement)
 //     expect(arrayToFill[arrayLength - 1]).equal(fillingElement)

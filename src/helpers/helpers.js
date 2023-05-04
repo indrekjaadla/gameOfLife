@@ -6,14 +6,20 @@
 
 export function arrayFiller(arrayToFill, fillingElement) {
     for (let i = 0; i < arrayToFill.length; i++) {
-        arrayToFill[i] = fillingElement
+        try {
+            arrayToFill[i] = fillingElement.slice(0)
+        } catch (e) {
+            arrayToFill[i] = fillingElement
+        }
     }
 }
 
 export function generateEmptyField(nOfRows, nOfColumns) {
     let a = new Array(nOfRows)
     let b = new Array(nOfColumns)
+
     arrayFiller(b, 0);
     arrayFiller(a, b);
+
     return a;
 }

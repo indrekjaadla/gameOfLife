@@ -85,24 +85,22 @@ test('surroundingLifeCounterCorner', () => {
     let indexOfRow = 0
     let indexOfColumn = 0
     let gameField = [
-        [1, 1, 0, 0],
-        [1, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0]]
+        [1, 1, 0],
+        [1, 1, 0],
+        [0, 0, 0]]
 
-    expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(2)
+    expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(3)
 })
 
 test('surroundingLifeCounterMiddle', () => {
-    let indexOfRow = 0
-    let indexOfColumn = 0
+    let indexOfRow = 1
+    let indexOfColumn = 1
     let gameField = [
-        [1, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0]]
+        [0, 1, 0],
+        [0, 1, 1],
+        [1, 0, 1]]
 
-    expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(0)
+    expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(4)
 })
 
 test('generateNextGenerationField', () => {

@@ -3,6 +3,7 @@ import {
     countSurroundingLiveCells,
     fillArrayWith,
     generateEmptyField,
+    generateNextGenerationField,
     initialPositionBeacon,
     initialPositionBlinker,
     initialPositionToad,
@@ -104,8 +105,11 @@ test('surroundingLifeCounterMiddle', () => {
     expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(0)
 })
 
-test('helper', () => {
-    console.log(initialPositionBlinker)
-    console.log(initialPositionToad)
-    console.log(initialPositionBeacon)
+test('generateNextGenerationField', () => {
+    let currentGenerationField = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]]
+
+    expect(generateNextGenerationField(currentGenerationField)).equal(undefined)
 })

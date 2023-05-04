@@ -72,3 +72,7 @@ export function countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField) 
     surroundingAliveCells -= gameField[indexOfRow][indexOfColumn]
     return surroundingAliveCells
 }
+
+export function generateNextGenerationField(currentGenerationField) {
+    return undefined
+}

@@ -1,10 +1,12 @@
 import {expect, test} from "vitest";
 import {
+    countSurroundingLiveCells,
     fillArrayWith,
     generateEmptyField,
     initialPositionBeacon,
     initialPositionBlinker,
-    initialPositionToad
+    initialPositionToad,
+    isCellPresent
 } from "src/helpers/helpers.js"
 
 test('fillArrayWithNumber', () => {
@@ -59,4 +61,39 @@ test('emptyField', () => {
             expect(emptyField[i][j]).equal(0)
         }
     }
+})
+
+test('isCellPresent', () => {
+    let gameField = [
+        [1, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]]
+
+    expect(isCellPresent(-1, 0, gameField)).equal(false)
+    expect(isCellPresent(3, 0, gameField)).equal(false)
+
+    expect(isCellPresent(0, -1, gameField)).equal(false)
+    expect(isCellPresent(0, -3, gameField)).equal(false)
+
+    expect(isCellPresent(0, 0, gameField)).equal(true)
+    expect(isCellPresent(1, 1, gameField)).equal(true)
+    expect(isCellPresent(2, 2, gameField)).equal(true)
+})
+
+test('surroundingLifeCounter', () => {
+    let indexOfRow = 0
+    let indexOfColumn = 0
+    let gameField = [
+        [1, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]]
+
+    expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(0)
+})
+
+test('helper', () => {
+    console.log(initialPositionBlinker)
+    console.log(initialPositionToad)
+    console.log(initialPositionBeacon)
 })

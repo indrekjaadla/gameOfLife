@@ -47,3 +47,28 @@ export function generateEmptyField(nOfRows, nOfColumns) {
 
     return a;
 }
+
+export function isCellPresent(indexOfRow, indexOfColumn, gameField) {
+    if (gameField[indexOfRow] === undefined) {
+        return false
+    } else if (gameField[indexOfRow][indexOfColumn] === undefined) {
+        return false
+    } else {
+        return true
+    }
+}
+
+export function countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField) {
+    let surroundingAliveCells = 0
+
+    for (let i = indexOfRow - 1; i < indexOfRow + 2; i++) {
+        for (let j = indexOfColumn - 1; j < indexOfColumn + 2; j++) {
+            if (isCellPresent(i, j, gameField)) {
+                surroundingAliveCells += gameField[i][j]
+            }
+        }
+    }
+
+    surroundingAliveCells -= gameField[indexOfRow][indexOfColumn]
+    return surroundingAliveCells
+}

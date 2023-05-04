@@ -17,6 +17,16 @@ initialPositionToad[3][1] = 1
 initialPositionToad[3][2] = 1
 initialPositionToad[3][3] = 1
 
+export let initialPositionBeacon = generateEmptyField(6, 6)
+initialPositionBeacon[1][1] = 1
+initialPositionBeacon[1][2] = 1
+initialPositionBeacon[2][1] = 1
+initialPositionBeacon[2][2] = 1
+initialPositionBeacon[3][3] = 1
+initialPositionBeacon[3][4] = 1
+initialPositionBeacon[4][3] = 1
+initialPositionBeacon[4][4] = 1
+
 
 export function arrayFiller(arrayToFill, fillingElement) {
     for (let i = 0; i < arrayToFill.length; i++) {

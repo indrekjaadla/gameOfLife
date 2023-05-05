@@ -3,6 +3,7 @@ import {
     countSurroundingLiveCells,
     decideLifeOrDeath,
     fillArrayWith,
+    generateEmptyField,
     generateNextGenerationField,
     isCellPresent
 } from "src/helpers/helpers.js"
@@ -46,20 +47,20 @@ test('fillArrayWithString', () => {
 //     console.log(arrayToFill[arrayLength - 1])
 // })
 
-// test('emptyField', () => {
-//     let nOfRows = 6
-//     let nOfColumns = 6
-//     let emptyField = generateEmptyField(nOfRows, nOfColumns)
-//
-//     expect(emptyField.length).equal(nOfRows)
-//     expect(emptyField[0].length).equal(nOfColumns)
-//
-//     for (let i = 0; i < emptyField.length; i++) {
-//         for (let j = 0; j < emptyField[i]; j++) {
-//             expect(emptyField[i][j]).equal(1)
-//         }
-//     }
-// })
+test('emptyField', () => {
+    let nOfRows = 6
+    let nOfColumns = 6
+    let emptyField = generateEmptyField(nOfRows, nOfColumns)
+
+    expect(emptyField.length).equal(nOfRows)
+    expect(emptyField[0].length).equal(nOfColumns)
+
+    for (let i = 0; i < emptyField.length; i++) {
+        for (let j = 0; j < emptyField[i].length; j++) {
+            expect(emptyField[i][j]).equal(0)
+        }
+    }
+})
 
 test('isCellPresent', () => {
     let gameField = [

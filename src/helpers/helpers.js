@@ -43,7 +43,6 @@ export function generateEmptyField(nOfRows, nOfColumns) {
 
     fillArrayWith(0, b);
     fillArrayWith(b, a);
-
     return a;
 }
 
@@ -67,23 +66,29 @@ export function countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField) 
             }
         }
     }
-
     surroundingAliveCells -= gameField[indexOfRow][indexOfColumn]
     return surroundingAliveCells
 }
 
-export function decideLifeOrDeath() {
-    return undefined
-}
+export function decideLifeOrDeath(indexOfRow, indexOfColumn, gameField) {
+    let countOfSurroundingLiveCells = countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)
+    let currentState = gameField[indexOfRow][indexOfColumn]
 
+    if (countOfSurroundingLiveCells === 3 || countOfSurroundingLiveCells === 2 && currentState === 1) {
+        return 1
+    } else {
+        return 0
+    }
+}
 
 export function generateNextGenerationField(currentGenerationField) {
     let nextGenerationField = generateEmptyField(currentGenerationField.length, currentGenerationField[0].length)
 
     for (let i = 0; i < currentGenerationField.length; i++) {
-        for (let j = 0; j < currentGenerationField[i]; j++) {
-            nextGenerationField[i][j] = 0
+        for (let j = 0; j < currentGenerationField[i].length; j++) {
+            nextGenerationField[i][j] = decideLifeOrDeath(i, j, currentGenerationField)
         }
     }
+
     return nextGenerationField
 }

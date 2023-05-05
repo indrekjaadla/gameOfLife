@@ -1,10 +1,10 @@
 import {expect, test} from "vitest";
 import {
-    fillArrayWith,
-    isCellPresent,
     countSurroundingLiveCells,
     decideLifeOrDeath,
-    generateNextGenerationField
+    fillArrayWith,
+    generateNextGenerationField,
+    isCellPresent
 } from "src/helpers/helpers.js"
 
 test('fillArrayWithNumber', () => {
@@ -87,6 +87,13 @@ test('surroundingLifeCounterCorner', () => {
         [0, 0, 0]]
 
     expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(3)
+
+    gameField = [
+        [1, 1, 0],
+        [1, 0, 0],
+        [0, 0, 0]]
+
+    expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(2)
 })
 
 test('surroundingLifeCounterMiddle', () => {
@@ -100,25 +107,77 @@ test('surroundingLifeCounterMiddle', () => {
     expect(countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField)).equal(4)
 })
 
-test('', () =>{
-    expect(decideLifeOrDeath).equal(undefined)
+test('decideLifeOrDeathOfDeadCell', () => {
+    let gameField = [
+        [0, 1, 0],
+        [0, 0, 1],
+        [1, 0, 0]]
+    expect(decideLifeOrDeath(1, 1, gameField)).equal(1)
+
+    gameField = [
+        [0, 0, 0],
+        [1, 0, 1],
+        [1, 0, 1]]
+    expect(decideLifeOrDeath(1, 1, gameField)).equal(0)
+
+    gameField = [
+        [0, 0, 0],
+        [0, 0, 1],
+        [0, 1, 0]]
+    expect(decideLifeOrDeath(1, 1, gameField)).equal(0)
+})
+
+test('decideLifeOrDeathOfLiveCell', () => {
+    let gameField = [
+        [0, 1, 0],
+        [0, 1, 1],
+        [0, 0, 0]]
+    expect(decideLifeOrDeath(1, 1, gameField)).equal(1)
+
+    gameField = [
+        [0, 1, 0],
+        [0, 1, 1],
+        [1, 0, 0]]
+    expect(decideLifeOrDeath(1, 1, gameField)).equal(1)
+
+    gameField = [
+        [0, 0, 0],
+        [0, 1, 1],
+        [0, 0, 0]]
+    expect(decideLifeOrDeath(1, 1, gameField)).equal(0)
+
+    gameField = [
+        [0, 0, 1],
+        [1, 1, 1],
+        [1, 0, 0]]
+    expect(decideLifeOrDeath(1, 1, gameField)).equal(0)
+
+    gameField = [
+        [1, 0, 0],
+        [0, 0, 1],
+        [0, 1, 1]]
+    expect(decideLifeOrDeath(2, 2, gameField)).equal(1)
 })
 
 test('generateNextGenerationField', () => {
     let currentGenerationField = [
         [1, 0, 0],
+        [0, 0, 1],
+        [0, 1, 1]]
+
+    let expectedGenerationField = [
         [0, 0, 0],
-        [0, 0, 1]]
+        [0, 0, 1],
+        [0, 1, 1]]
 
     let nextGenerationField = generateNextGenerationField(currentGenerationField)
 
     for (let i = 0; i < nextGenerationField.length; i++) {
-        for (let j = 0; j < nextGenerationField[i]; j++) {
-            expect(nextGenerationField[i][j]).equal(currentGenerationField[i][j])
+        for (let j = 0; j < nextGenerationField[i].length; j++) {
+            expect(nextGenerationField[i][j]).equal(expectedGenerationField[i][j])
         }
     }
 
-    console.log(currentGenerationField)
+    console.log(expectedGenerationField)
     console.log(nextGenerationField)
-
 })

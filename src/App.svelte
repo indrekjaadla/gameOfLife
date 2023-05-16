@@ -1,28 +1,16 @@
 <script>
-
-
-import GameField from "./components/GameField.svelte";
+    import Game from "./components/Game.svelte";
 </script>
 
 <main>
-    <h1>GAME OF LIFE</h1>
-    <div class="flex-container">
-        <button>Blinker</button>
-        <button>Toad</button>
-        <button>Beacon</button>
-    </div>
-
-    <form class="flex-container">
-        <input type="number" placeholder="South" min="3" max="50">
-        <input type="number" placeholder="East" min="3" max="50">
-        <input type="submit" value="Create Field">
-    </form>
-
-<GameField/>
-
-
+    <Game/>
 </main>
 
 <style>
-
+    main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
 </style>

@@ -46,14 +46,30 @@ export function generateEmptyField(nOfRows, nOfColumns) {
     return a;
 }
 
+export function setCellMeasurements(nOfRows, nOfColumns) {
+    let clientHeight = document.querySelector(':root').clientHeight
+    let clientWidth = document.querySelector(':root').clientWidth
+
+    let cellSideMeasurement =
+        Math.min(
+            Math.round(clientHeight * 0.8 / nOfRows),
+            Math.round(clientWidth / nOfColumns))
+
+    let cellUnit = cellSideMeasurement / 9
+    let cellPadding = cellUnit * 4 + 'px'
+    let cellMargin = cellUnit * 0.5 + 'px'
+
+    console.log(cellSideMeasurement)
+    console.log(clientHeight)
+
+    document.querySelector(':root').style.setProperty('--cell-padding', cellPadding)
+    document.querySelector(':root').style.setProperty('--cell-margin', cellMargin)
+}
+
 export function isCellPresent(indexOfRow, indexOfColumn, gameField) {
     if (gameField[indexOfRow] === undefined) {
         return false
-    } else if (gameField[indexOfRow][indexOfColumn] === undefined) {
-        return false
-    } else {
-        return true
-    }
+    } else return gameField[indexOfRow][indexOfColumn] !== undefined;
 }
 
 export function countSurroundingLiveCells(indexOfRow, indexOfColumn, gameField) {

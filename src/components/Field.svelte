@@ -1,6 +1,20 @@
 <script>
+
     export let field
     export let fieldCreated
+
+    function handleCellClick(event) {
+        let coordinates = event.target.id.split('_')
+        let rowNumber = parseInt(coordinates[0])
+        let columnNumber = parseInt(coordinates[1])
+        let cellState = field[rowNumber][columnNumber]
+
+        if (cellState === 1) {
+            field[rowNumber][columnNumber] = 0
+        } else {
+            field[rowNumber][columnNumber] = 1
+        }
+    }
 </script>
 
 <div class="game-field">
@@ -8,7 +22,10 @@
         {#each field as row, i}
             <div class="game-row">
                 {#each row as cell, j}
-                    <div class="{cell === 1 ? 'cell-life' : 'cell-death'}"></div>
+                    <div class="{cell === 1 ? 'cell-life' : 'cell-death'}"
+                         id="{i}_{j}"
+                         on:click={handleCellClick}>
+                    </div>
                 {/each}
             </div>
         {/each}

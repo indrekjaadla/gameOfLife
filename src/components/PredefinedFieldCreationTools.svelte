@@ -2,7 +2,7 @@
     import {
         generateNextGenerationField,
         initialPositionBeacon,
-        initialPositionBlinker,
+        initialPositionBlinker, initialPositionGlider,
         initialPositionToad,
         setCellMeasurements
     } from "../helpers/helpers.js";
@@ -36,8 +36,12 @@
         setCellMeasurements(nOfRows, nOfColumns)
     }
 
-    function setField(fieldToSet) {
-        field = fieldToSet;
+    function handleGlider() {
+        fieldCreated = true;
+        field = initialPositionGlider
+        let nOfRows = field.length
+        let nOfColumns = field[0].length
+        setCellMeasurements(nOfRows, nOfColumns)
     }
 
     function handleMutateLife() {
@@ -59,6 +63,7 @@
     <button on:click={handleBlinker}>Blinker</button>
     <button on:click={handleToad}>Toad</button>
     <button on:click={handleBeacon}>Beacon</button>
+    <button on:click={handleGlider}>Glider</button>
     {#if isMutating}
         <button on:click={handleStopLife}>Stop life</button>
     {:else}

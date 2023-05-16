@@ -27,12 +27,12 @@ initialPositionBeacon[3][4] = 1
 initialPositionBeacon[4][3] = 1
 initialPositionBeacon[4][4] = 1
 
-export let initialPositionGlider = generateEmptyField(7, 7)
-initialPositionGlider[2][3] = 1
-initialPositionGlider[3][4] = 1
-initialPositionGlider[4][2] = 1
-initialPositionGlider[4][3] = 1
-initialPositionGlider[4][4] = 1
+export let initialPositionGlider = generateEmptyField(20, 20)
+initialPositionGlider[0][1] = 1
+initialPositionGlider[1][2] = 1
+initialPositionGlider[2][0] = 1
+initialPositionGlider[2][1] = 1
+initialPositionGlider[2][2] = 1
 
 export function fillArrayWith(fillingElement, arrayToFill) {
     for (let i = 0; i < arrayToFill.length; i++) {

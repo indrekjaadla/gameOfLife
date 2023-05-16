@@ -9,6 +9,8 @@
 
     export let fieldCreated
     export let field
+    let isMutating = false
+    let interval
 
     function handleBlinker() {
         fieldCreated = true;
@@ -34,9 +36,22 @@
         setCellMeasurements(nOfRows, nOfColumns)
     }
 
+    function setField(fieldToSet) {
+        field = fieldToSet;
+    }
+
     function handleMutateLife() {
-        fieldCreated = true;
-        field = generateNextGenerationField(field)
+        handleStopLife()
+        fieldCreated = true
+        isMutating = true
+        interval = setInterval(() => {
+            field = generateNextGenerationField(field)
+        }, 300)
+    }
+
+    function handleStopLife() {
+        isMutating = false
+        clearInterval(interval)
     }
 </script>
 
@@ -44,5 +59,9 @@
     <button on:click={handleBlinker}>Blinker</button>
     <button on:click={handleToad}>Toad</button>
     <button on:click={handleBeacon}>Beacon</button>
-    <button on:click={handleMutateLife}>Mutate life</button>
+    {#if isMutating}
+        <button on:click={handleStopLife}>Stop life</button>
+    {:else}
+        <button on:click={handleMutateLife}>Mutate life</button>
+    {/if}
 </div>

@@ -66,9 +66,6 @@ export function setCellMeasurements(nOfRows, nOfColumns) {
     let cellPadding = cellUnit * 4 + 'px'
     let cellMargin = cellUnit * 0.5 + 'px'
 
-    console.log(cellSideMeasurement)
-    console.log(clientHeight)
-
     document.querySelector(':root').style.setProperty('--cell-padding', cellPadding)
     document.querySelector(':root').style.setProperty('--cell-margin', cellMargin)
 }

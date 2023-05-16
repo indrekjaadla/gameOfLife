@@ -2,7 +2,8 @@
     import {
         generateNextGenerationField,
         initialPositionBeacon,
-        initialPositionBlinker, initialPositionGlider,
+        initialPositionBlinker,
+        initialPositionGlider,
         initialPositionToad,
         setCellMeasurements
     } from "../helpers/helpers.js";

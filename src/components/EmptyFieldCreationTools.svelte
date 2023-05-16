@@ -1,8 +1,5 @@
 <script>
-    import {
-        generateEmptyField,
-        setCellMeasurements
-    } from "../helpers/helpers.js";
+    import {generateEmptyField, setCellMeasurements} from "../helpers/helpers.js";
 
     let nOfRows = 3
     let nOfColumns = 3
